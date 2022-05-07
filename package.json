@@ -1,0 +1,38 @@
+{
+  "name": "mm-tool",
+  "version": "1.0.0",
+  "description": "mm tool",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c rollup.config.js && node scripts/build.js",
+    "build:watch": "rollup -c rollup.config.js -w",
+    "fix:prettier": "prettier \"./src\" --write",
+    "test:prettier": "prettier \"./src\" --list-different"
+  },
+  "keywords": [
+    "snowflake",
+    "tool",
+    "page.util"
+  ],
+  "author": "mlmdflr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlmdflr/mm-tool"
+  },
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "files": [
+    "**/*"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "prettier": "^2.6.2",
+    "rollup": "^2.51.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.6.2"
+  }
+}
