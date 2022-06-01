@@ -7,7 +7,8 @@
     "build": "rollup -c rollup.config.js && node scripts/build.js",
     "build:watch": "rollup -c rollup.config.js -w",
     "fix:prettier": "prettier \"./src\" --write",
-    "test:prettier": "prettier \"./src\" --list-different"
+    "test:prettier": "prettier \"./src\" --list-different",
+    "test": " node ./test/index.js"
   },
   "keywords": [
     "snowflake",
