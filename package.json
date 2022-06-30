@@ -1,14 +1,15 @@
 {
-  "name": "mm-tool",
+  "name": "@mlmdflr/tools",
   "version": "1.0.0",
-  "description": "mm tool",
+  "description": "Commonly used tools",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c rollup.config.js && node scripts/build.js",
+    "build": "rollup -c rollup.config.js && node build.js",
     "build:watch": "rollup -c rollup.config.js -w",
     "fix:prettier": "prettier \"./src\" --write",
     "test:prettier": "prettier \"./src\" --list-different",
-    "test": " node ./test/index.js"
+    "test": " node ./test/index.js",
+    "test-esm": " node --experimental-modules ./test/index.mjs"
   },
   "keywords": [
     "snowflake",

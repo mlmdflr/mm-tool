@@ -10,7 +10,8 @@ class Snowflake {
   private static dataCenterIdBits: bigint = 5n;
   private static sequenceBits: bigint = 12n;
 
-  private static maxWorkerId: bigint = -1n ^ (-1n << BigInt(Snowflake.workerIdBits));
+  private static maxWorkerId: bigint =
+    -1n ^ (-1n << BigInt(Snowflake.workerIdBits));
   private static maxDataCenterId: bigint =
     -1n ^ (-1n << Snowflake.dataCenterIdBits);
   private static sequenceMask: bigint = -1n ^ (-1n << Snowflake.sequenceBits);
@@ -70,4 +71,4 @@ class Snowflake {
   }
 }
 
-export { Snowflake }
+export { Snowflake };
