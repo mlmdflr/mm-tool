@@ -4,17 +4,18 @@
  * @date 2021-10-06 17:13:16
  */
 class Snowflake {
-  private static twepoch = 1548988646430n;
+  private static twepoch = BigInt(1548988646430);
 
-  private static workerIdBits: bigint = 5n;
-  private static dataCenterIdBits: bigint = 5n;
-  private static sequenceBits: bigint = 12n;
+  private static workerIdBits: bigint = BigInt(5);
+  private static dataCenterIdBits: bigint = BigInt(5);
+  private static sequenceBits: bigint = BigInt(12);
 
   private static maxWorkerId: bigint =
-    -1n ^ (-1n << BigInt(Snowflake.workerIdBits));
+    BigInt(-1) ^ (BigInt(-1) << BigInt(Snowflake.workerIdBits));
   private static maxDataCenterId: bigint =
-    -1n ^ (-1n << Snowflake.dataCenterIdBits);
-  private static sequenceMask: bigint = -1n ^ (-1n << Snowflake.sequenceBits);
+    BigInt(-1) ^ (BigInt(-1) << BigInt(Snowflake.dataCenterIdBits));
+  private static sequenceMask: bigint =
+    BigInt(-1) ^ (BigInt(-1) << Snowflake.sequenceBits);
 
   private static workerIdShift: bigint = Snowflake.sequenceBits;
   private static dataCenterIdShift: bigint =
@@ -22,17 +23,17 @@ class Snowflake {
   private static timestampLeftShift: bigint =
     Snowflake.dataCenterIdShift + Snowflake.dataCenterIdBits;
 
-  private static sequence: bigint = 0n;
-  private static lastTimestamp: bigint = -1n;
+  private static sequence: bigint = BigInt(0);
+  private static lastTimestamp: bigint = BigInt(-1);
   private static workerId: bigint;
   private static dataCenterId: bigint;
 
   constructor(workerId: bigint, dataCenterId: bigint) {
-    if (workerId > Snowflake.maxWorkerId || workerId < 0n)
+    if (workerId > Snowflake.maxWorkerId || workerId < BigInt(0))
       throw new Error(
         `workerId can't be greater than ${Snowflake.maxWorkerId} or less than 0`
       );
-    if (dataCenterId > Snowflake.maxDataCenterId || dataCenterId < 0n)
+    if (dataCenterId > Snowflake.maxDataCenterId || dataCenterId < BigInt(0))
       throw new Error(
         `dataCenterId can't be greater than ${Snowflake.maxDataCenterId} or less than 0`
       );
@@ -43,16 +44,17 @@ class Snowflake {
   public nextId(): bigint {
     let timestamp = Snowflake.currentLinuxTime();
     const diff = timestamp - Snowflake.lastTimestamp;
-    if (diff < 0n)
+    if (diff < BigInt(0))
       throw new Error(
         `Clock moved backwards. Refusing to generate id for ${-diff} milliseconds`
       );
-    if (diff === 0n) {
-      Snowflake.sequence = (Snowflake.sequence + 1n) & Snowflake.sequenceMask;
-      if (Snowflake.sequence === 0n) {
+    if (diff === BigInt(0)) {
+      Snowflake.sequence =
+        (Snowflake.sequence + BigInt(1)) & Snowflake.sequenceMask;
+      if (Snowflake.sequence === BigInt(0)) {
         timestamp = Snowflake.tilNextMillis(Snowflake.lastTimestamp);
       }
-    } else Snowflake.sequence = 0n;
+    } else Snowflake.sequence = BigInt(0);
     Snowflake.lastTimestamp = timestamp;
     return (
       ((timestamp - Snowflake.twepoch) << Snowflake.timestampLeftShift) |

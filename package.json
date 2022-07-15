@@ -1,6 +1,6 @@
 {
   "name": "@mlmdflr/tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Commonly used tools",
   "license": "MIT",
   "scripts": {
@@ -21,6 +21,10 @@
     "type": "git",
     "url": "https://github.com/mlmdflr/mm-tool"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "engines": {
     "node": ">=16.14.0"
   },
@@ -28,13 +32,13 @@
     "**/*"
   ],
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.2.1",
-    "prettier": "^2.6.2",
-    "rollup": "^2.51.2",
+    "prettier": "^2.7.1",
+    "rollup": "^2.76.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.2",
-    "typescript": "^4.6.2"
+    "rollup-plugin-typescript2": "^0.32.1",
+    "typescript": "^4.7.4"
   }
 }
