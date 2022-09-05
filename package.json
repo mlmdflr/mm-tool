@@ -1,9 +1,10 @@
 {
   "name": "@mlmdflr/tools",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Commonly used tools",
   "license": "MIT",
   "scripts": {
+    "b_publish": "prettier \"./src\" --write && rollup -c rollup.config.js && node build.js && cd dist && npm publish --registry registry.npmjs.org --access=public && cd ..",
     "build": "rollup -c rollup.config.js && node build.js",
     "build:watch": "rollup -c rollup.config.js -w",
     "fix:prettier": "prettier \"./src\" --write",
@@ -36,7 +37,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.2.1",
     "prettier": "^2.7.1",
-    "rollup": "^2.76.0",
+    "rollup": "^2.77.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
     "typescript": "^4.7.4"

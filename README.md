@@ -1,6 +1,6 @@
 # mm tool
 
-Some common tool classes
+Some handy tool
 
 # Install
 
