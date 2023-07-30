@@ -52,7 +52,7 @@ const units = [
   "NB",
   "DB",
 ] as const;
-type unit = typeof units[number];
+type unit = (typeof units)[number];
 
 export type treatedBytes = { bytes: number; unit: unit };
 

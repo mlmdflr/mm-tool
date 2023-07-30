@@ -170,7 +170,7 @@ export class PageUtil {
   public static rainbow(
     currentPage: number,
     pageCount: number,
-    displayCount?: number
+    displayCount?: number,
   ): Promise<number[]> {
     return new Promise<number[]>((resolve, reject) => {
       displayCount = displayCount !== undefined ? displayCount : 10;

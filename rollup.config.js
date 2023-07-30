@@ -1,22 +1,24 @@
-import { readdirSync, statSync } from "fs";
-import { resolve, extname } from "path";
-import { builtinModules } from "module";
-import { terser } from "rollup-plugin-terser";
-import commonjs from "@rollup/plugin-commonjs";
-import nodeResolve from "@rollup/plugin-node-resolve";
-import json from "@rollup/plugin-json";
-import typescript from "rollup-plugin-typescript2";
+const { readdirSync, statSync } = require("fs")
+const { resolve, extname } = require("path")
+const { builtinModules } = require("module")
+const terser = require("@rollup/plugin-terser")
+const commonjs = require("@rollup/plugin-commonjs")
+const nodeResolve = require("@rollup/plugin-node-resolve")
+const json = require("@rollup/plugin-json")
+const typescript = require("rollup-plugin-swc3").default
+const dts = require("rollup-plugin-dts").default
 
 const plugins = () => [
   json(),
   typescript({
     tsconfig: "./tsconfig.json",
+    
   }),
   commonjs(),
   nodeResolve({
     preferBuiltins: true,
   }),
-  terser(),
+  terser()
 ];
 
 const external = [
@@ -46,7 +48,13 @@ function file(path) {
   return files;
 }
 let config = [];
+
 flies.forEach((path) => {
+  config.push({
+    input: `./src/${path}.ts`,
+    output: [{ file: `./dist/${path}.d.ts`, format: "es" }],
+    plugins: [dts()],
+  })
   config.push({
     input: `./src/${path}.ts`,
     output: [
@@ -60,10 +68,11 @@ flies.forEach((path) => {
         file: `./dist/${path}.mjs`,
         format: "esm",
         sourcemap: false,
-      },
+      }
     ],
     external,
     plugins: plugins(),
   });
 });
-export default config
+
+exports.default = config

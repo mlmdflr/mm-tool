@@ -14,6 +14,6 @@ export function sleep<T>(duration: number, value?: T): Promise<T> {
   return new Promise((resolve): any =>
     setTimeout(() => {
       resolve(value as T);
-    }, durationInMilliseconds)
+    }, durationInMilliseconds),
   );
 }

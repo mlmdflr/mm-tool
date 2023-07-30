@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "incremental": true,
+    "incremental": false,
     "moduleResolution": "node",
     "inlineSourceMap": true,
     "esModuleInterop": true,
@@ -15,14 +15,24 @@
     "listEmittedFiles": false,
     "listFiles": false,
     "pretty": true,
-    "lib": ["DOM", "ESNext"],
-    "typeRoots": ["node_modules/@types"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "target": "ESNext",
     "module": "ESNext",
-    "types": ["node"],
-    "declaration": true
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/**"],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules/**"
+  ],
   "compileOnSave": false
 }

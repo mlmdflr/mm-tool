@@ -12,7 +12,7 @@ export function queryParams(data: any): string {
     if (value.constructor === Array) {
       value.forEach((_value) => {
         _result.push(
-          encodeURIComponent(key) + "[]=" + encodeURIComponent(_value)
+          encodeURIComponent(key) + "[]=" + encodeURIComponent(_value),
         );
       });
     } else {
@@ -37,9 +37,4 @@ export function toParams(str: string) {
     obj[arr[0]] = decodeURIComponent(arr[1]);
   }
   return obj;
-}
-
-// 静态资源路径
-export function assetsUrl(url: string) {
-  return new URL(`../assets/${url}`, import.meta.url).href;
 }

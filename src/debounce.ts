@@ -5,11 +5,12 @@ export function debounce<Args extends any[], F extends (...args: Args) => any>(
     isImmediate?: boolean;
     maxWait?: number;
     callback?: (data: ReturnType<F>) => void;
-  } = {}
+  } = {},
 ): {
-  (this: ThisParameterType<F>, ...args: Args & Parameters<F>): Promise<
-    ReturnType<F>
-  >;
+  (
+    this: ThisParameterType<F>,
+    ...args: Args & Parameters<F>
+  ): Promise<ReturnType<F>>;
   cancel: (reason?: any) => void;
 } {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
